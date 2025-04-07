@@ -13,7 +13,7 @@
     flex-wrap: wrap;
     height: 650px;
     width: 750px;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     align-content: flex-end;
     justify-content: center;
 
@@ -25,6 +25,7 @@
     width: 500px;
     border: 1px solid black;
     justify-content: center;
+    background-color: #bfabed;
 }
 
 #innerDisplay{
@@ -36,6 +37,7 @@
     margin: 10px;
     justify-content: center;
     align-content: center;
+    background-color: white;
 }
 
 #display{
@@ -63,7 +65,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    background-color: #ecfb48;
+    background-color: #f99b1f;
     margin-bottom: 50px;
 }
 
