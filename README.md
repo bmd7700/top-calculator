@@ -13,3 +13,5 @@ Calculator should:
         >> When results are displayed, pressing a new digit should clear the result and start a new calculation. 
     > Add a backspace button.
     > Ensure only one decimal point can be entered at a time. 
+
+    >>Objective for today: harvest user input from buttons
