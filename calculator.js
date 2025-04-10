@@ -7,7 +7,7 @@ let desiredOperation;
 //event listener
 let buttons = document.getElementsByClassName('button');
 let buttonArray = Array.from(buttons);
-buttonArray.forEach(button =>(addEventListener("click", () => console.log(button.id))));
+buttonArray.forEach(button =>(button.addEventListener("click", () => console.log(button.id))));
 
 // Call the Operate function with the user-inputted data. 
 //step 3: create a new function 'operate' that takes the operator and two numbers and calls one of the above functions.
