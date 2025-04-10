@@ -9,29 +9,19 @@ let buttons = document.getElementsByClassName('button');
 let buttonArray = Array.from(buttons);
 buttonArray.forEach(button =>(button.addEventListener("click", () => console.log(button.id))));
 
-// Call the Operate function with the user-inputted data. 
-//step 3: create a new function 'operate' that takes the operator and two numbers and calls one of the above functions.
-// need to debug this so operator can be entered without quotes
-// maybe ingest the entire expression and then parse it by symbols?
-// been approaching this all wrong. Take input from the buttons and use that to call the functions.
-function operateTest(exp){
-    let operation = exp.toString();
-    console.log('Operation:' + operation + ' Type: ' + (typeof operation));
+//Upon clicking, the inputs should go to an array.
+//We need to collect the first number, which could be any length; an operator; and a second n-length number
+//Have the script monitor inputs -- 
+// if it's a number, store it in a string (V1). 
+// If it's an operator, convert the string to a number and store it in a variable, then collect the second number (V2)
+//  Whenever the second number is collected, call the calculation function (F1(V1,V2)) and store the result in variable (V1). 
+// Now loop back to listen for an operator -- listen for a second number -- add it to the first number, then store it in the first number...etc etc
+/* 
 
-}
-// function operate(num1, operator, num2){
-//     let op = operator;
-//     console.log(op);
-//     if(op == '+'){
-//         return add(num1, num2);
-//     } else if(op == '-'){
-//         return subtract(num1, num2);
-//     } else if(op == '*'){
-//         return multiply(num1, num2);
-//     } else if(op == '/'){
-//         return divide(num1, num2);
-//     } else {return 'Operator Error'}
-// }
+*/
+
+
+
 
 //Mathematical Operations: 
 function add(num1, num2){
