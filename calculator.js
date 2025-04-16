@@ -10,7 +10,7 @@ let operatorArray = ['+', '-', '*', '/', '='];
 let memory = false;
 
 function operate(operand){
-    if(!operatorArray.includes(operand) && memory === false){ //if input is not an operator and memory is false;
+    if(!operatorArray.includes(operand) && memory === false){ // -->> if input is not an operator and memory is false;
         if(desiredOperation.length === 0){ //if there is no operator, store value in input1 (v1)
             input1 = input1.concat(operand);
             displayResult(input1);
@@ -20,8 +20,8 @@ function operate(operand){
             displayResult(input2);
             console.log('input2: ' + input2);
         } 
-    } else {
-        if(desiredOperation.length === 0){
+    } else { //-->> if input is an operator or memory is true
+        if(desiredOperation.length === 0){ // if the operator variable is empty
             desiredOperation = operand.toString(); //stores operator as string
             displayResult(operand);
             console.log('desiredOperation: ' + desiredOperation);
@@ -52,7 +52,12 @@ function operate(operand){
                     desiredOperation = '';
                     console.log(desiredOperation);
                     break;
-                //case '=':
+                case '=':
+                    ()=>{
+                        let display = document.getElementById('display');
+                        let displayEquals = document.createTextNode('=');
+                        display.appendChild(displayEquals);
+                    }
                 default:
                     console.log('Error: you are in the default selection in the switch.');
             }
@@ -86,3 +91,4 @@ function multiply(num1, num2){
 function divide(num1, num2){
     return num1 / num2;
 }
+
