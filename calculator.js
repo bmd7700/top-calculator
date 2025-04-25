@@ -1,94 +1,67 @@
 let buttons = document.getElementsByClassName('button');
 let buttonArray = Array.from(buttons);
-buttonArray.forEach(button =>(button.addEventListener("click", () => console.log(button.id))));
+buttonArray.forEach(button =>(button.addEventListener("click", () => console.log('input:' + button.id))));
 buttonArray.forEach(button =>(button.addEventListener("click", () => operate(button.id))));
 
-let input1 = '';
-let input2 = '';
-let desiredOperation = '';
-let operatorArray = ['+', '-', '*', '/', '='];
-let memory = false;
+let operatorArray = ['+', '-', '*', '/'];
+let numArray = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+let num1 = '';
+let num2 = '';
+let operator = '';
+let operation = false;
 
-function operate(operand){
-    if(!operatorArray.includes(operand) && memory === false){ // -->> if input is not an operator and memory is false;
-        if(desiredOperation.length === 0){ //if there is no operator, store value in input1 (v1)
-            input1 = input1.concat(operand);
-            displayResult(input1);
-            console.log('input1: ' + input1);
-        } else { //if there is an operator, store in V2 as string
-            input2 = input2.concat(operand);
-            displayResult(input2);
-            console.log('input2: ' + input2);
-        } 
-    } else { //-->> if input is an operator or memory is true
-        if(desiredOperation.length === 0){ // if the operator variable is empty
-            desiredOperation = operand.toString(); //stores operator as string
-            displayResult(operand);
-            console.log('desiredOperation: ' + desiredOperation);
-        } else {
-            let num1 = parseInt(input1);
-            console.log('num1: ' + num1);
-            let num2 = parseInt(input2);
-            console.log('num2: ' + num2);
-            let result;
-            switch(desiredOperation) {
-                case '+':
-                    result = add(num1, num2);
-                    desiredOperation = '';
-                    console.log(desiredOperation);
-                    break;
-                case '-':
-                    result = subtract(num1, num2);
-                    desiredOperation = '';
-                    console.log(desiredOperation);
-                    break;
-                case '*':
-                    result = multiply(num1, num2);
-                    desiredOperation = '';
-                    console.log(desiredOperation);
-                    break;
-                case '/':
-                    result = divide(num1, num2);
-                    desiredOperation = '';
-                    console.log(desiredOperation);
-                    break;
-                case '=':
-                    ()=>{
-                        let display = document.getElementById('display');
-                        let displayEquals = document.createTextNode('=');
-                        display.appendChild(displayEquals);
-                    }
-                default:
-                    console.log('Error: you are in the default selection in the switch.');
-            }
-            console.log('result: ' + result);
-            input1 = result;
-            input2 = '';
-            memory = true;
-            displayResult(result);
-            // will also need a CLEAR button that clears memory (memory = false)
-            //also need to display the operators in the display as it goes
-        }
+function operate(input){
+    if(numArray.includes(input) && operation === false){
+        num1 = num1.concat(input);
+        console.log('num1: ' + num1);
+    } else if(numArray.includes(input) && operation === true){
+        num2 = num2.concat(input);
+        console.log('num2: ' + num2);
+    } else if(operatorArray.includes(input) && operation === false){
+        operator = input;
+        operation = true;
+        console.log('operator:' + operator + ' operation: ' + operation);
+    } else if((input === '=') || (operatorArray.includes(input))){
+        num1 = parseInt(num1);
+        num2 = parseInt(num2);
+        result = maths(num1, operator, num2);
+        displayResult(result);
+        num1 = '';
+        num2 = '';
+        operator = '';
+        operation = false;
+        console.log('Resetting. num1: ' + num1 + ' num2: ' + num2 + ' operator: ' + operator); 
     }
+
 }
+
+//Mathematical Operations: 
+function maths(num1, operator, num2){
+    (console.log('you are in maths.'));
+    let result;
+        switch(operator){
+        case '+': 
+            result = num1 + num2;
+            break;
+        case '-': 
+            result = num1 - num2;
+            break;
+        case '/':
+            result = num1 / num2;
+            break;
+        case '*':
+            result = num1 * num2;
+            break;
+        }
+        displayResult(result);
+        num1 = result;
+        console.log('result: ' + result + 'new num1: ' + num1);
+    }
+
+
 
 function displayResult(someNum){
     const display = document.getElementById('display');
     const displayContent = document.createTextNode(someNum);
     display.appendChild(displayContent);
 }
-
-//Mathematical Operations: 
-function add(num1, num2){
-    return num1 + num2;
-}
-function subtract(num1, num2){
-    return num1 - num2;
-}
-function multiply(num1, num2){
-    return num1 * num2;
-}
-function divide(num1, num2){
-    return num1 / num2;
-}
-
