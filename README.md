@@ -14,4 +14,7 @@ Calculator should:
     > Add a backspace button.
     > Ensure only one decimal point can be entered at a time. 
 
-    >>Objective for today: harvest user input from buttons
+    >>Objective for next session: fix display issues.
+    1: display doesn't show user inputs.
+    2: display shows result, but doesn't clear.
+    3: some things are showing in the display as undefined. Why?
