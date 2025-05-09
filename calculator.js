@@ -11,8 +11,6 @@ const input1 = [];
 const input2 = [];
 const operation = [];
 let storeNum1 = false;
-const num1 = 0;
-const num2 = 0;
 
 function operate(input){
     const number = numArray.includes(input);
@@ -22,9 +20,12 @@ function operate(input){
         length = (operation.length > 0);
         console.log('length variable: ' + length);
         if(length){
-            //doMath();
+            let opp = operation.toString();
+            console.log('opp: ' + opp + ' ' + typeof opp);
+            doMath(input1, input2, opp);
             operation.pop();
-            console.log('operation array should be cleared: ' + operation);
+            operation.push(input);
+            console.log('operation array should be cleared and replaced: ' + operation);
         } else {
             operation.push(input);
             console.log('operation array: ' + operation);
@@ -45,10 +46,34 @@ function operate(input){
     }
 }
 
+function doMath(firstNum, secondNum, operator){
+    let num1 = makeNumbers(firstNum);
+    let num2 = makeNumbers(secondNum);
+    let result;
+    switch(operator){
+        case "+":
+            result = num1 + num2;
+            break;
+        case "-":
+            result = num1 - num2;
+            break;
+        case "*":
+            result = num1 * num2;
+            break;
+        case "/":
+            result = num1 / num2;
+            break;  
+    }
+    console.log('result: ' + result);
+    display(result);
+    return result;
+}
+
 function makeNumbers(arr){
     console.log('receiving array: ' + arr);
     let newArr = arr.join('');
-    console.log('new: ' + newArr);
+    console.log('new: ' + newArr + '' + typeof newArr);
+    return parseInt(newArr);
 }
 
 function display(someNum){

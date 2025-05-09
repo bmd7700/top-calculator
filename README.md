@@ -14,6 +14,12 @@ Calculator should:
     > Add a backspace button.
     > Ensure only one decimal point can be entered at a time. 
 
-    >>Objective for next session: fix display issues.
-    1: bug in display, something is entering as NaN or Undefined. Where is it coming from & why? --> Second operation stacking on first operation. The result of the first operation is storing as NaN or undefined somehow?
-    --> The problem is probably in the concatenation. The input function takes numbers and concatenates them, which would implicitly convert them to strings? 
+Calculator can now do math! Hooray! 
+Now to debug the following:
+    1. Display not working correctly. The display should show each iteration of the integer, and when a second operator is detected, it should do the math and show the result.
+    2. Equals sign logic. If the equals sign is pressed, the answer should display
+        >> if the next input is a number, the memory should be cleared and new math begins.
+        >> if the next input is an operator, the answer should be used as the first operand, etc. 
+    3. Decimals. Currently, decimals do not work. Decimals should be accepted and rounded. 
+    4. Add a backspace button.
+    5. Make the CLEAR button do something. 
