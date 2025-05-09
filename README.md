@@ -15,4 +15,5 @@ Calculator should:
     > Ensure only one decimal point can be entered at a time. 
 
     >>Objective for next session: fix display issues.
-    1: bug in display, something is entering as NaN or Undefined. Where is it coming from & why?
+    1: bug in display, something is entering as NaN or Undefined. Where is it coming from & why? --> Second operation stacking on first operation. The result of the first operation is storing as NaN or undefined somehow?
+    --> The problem is probably in the concatenation. The input function takes numbers and concatenates them, which would implicitly convert them to strings? 

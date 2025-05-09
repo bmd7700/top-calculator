@@ -1,76 +1,57 @@
-let buttons = document.getElementsByClassName('button');
-let buttonArray = Array.from(buttons);
+const buttons = document.getElementsByClassName('button');
+const buttonArray = Array.from(buttons);
 buttonArray.forEach(button =>(button.addEventListener("click", () => console.log('input:' + button.id))));
 buttonArray.forEach(button =>(button.addEventListener("click", () => operate(button.id))));
 
-let operatorArray = ['+', '-', '*', '/'];
-let numArray = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
-let num1 = '';
-let num2 = '';
-let operator = '';
-let operation = false;
+const operatorArray = ['+', '-', '*', '/', '='];
+const numArray = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+const numbers = numArray.map((x) => parseInt(x)); // this works to map the array to a series of numbers
+const flag = false;
+const input1 = [];
+const input2 = [];
+const operation = [];
+let storeNum1 = false;
+const num1 = 0;
+const num2 = 0;
 
 function operate(input){
-    if(numArray.includes(input) && operation === false){
-        num1 = num1.concat(input);
-        console.log('num1 calling display');
-        display(num1);
-        console.log('num1: ' + num1);
-    } else if(numArray.includes(input) && operation === true){
-        num2 = num2.concat(input);
-        console.log('num2 calling display');
-        display(num2);
-        console.log('num2: ' + num2);
-    } else if(operatorArray.includes(input) && operation === false){
-        operator = input;
-        console.log('operator calling display');
-        display(operator);
-        operation = true;
-        console.log('operator:' + operator + ' operation: ' + operation);
-    } else if((input === '=') || (operatorArray.includes(input))){
-        num1 = parseInt(num1);
-        num2 = parseInt(num2);
-        console.log('elseif statement calling display');
-        result = maths(num1, operator, num2);
-        display(result);
-        num1 = '';
-        num2 = '';
-        operator = '';
-        operation = false;
-        console.log('Resetting. num1: ' + num1 + ' num2: ' + num2 + ' operator: ' + operator); 
+    const number = numArray.includes(input);
+    const operator = operatorArray.includes(input);
+    
+    if(operator){
+        length = (operation.length > 0);
+        console.log('length variable: ' + length);
+        if(length){
+            //doMath();
+            operation.pop();
+            console.log('operation array: ' + operation);
+        } else {
+            operation.push(input);
+            storeNum1 = true;
+        }
+    }
+
+    if(number){
+        if(storeNum1){
+            input2.push(input);
+            console.log('num2: ' + input2);
+        } else {
+            input1.push(input);
+            console.log('num1: ' + input1);
+        }
     }
 }
 
-//Mathematical Operations: 
-function maths(num1, operator, num2){
-    (console.log('you are in maths.'));
-    let result;
-        switch(operator){
-        case '+': 
-            result = num1 + num2;
-            break;
-        case '-': 
-            result = num1 - num2;
-            break;
-        case '/':
-            result = num1 / num2;
-            break;
-        case '*':
-            result = num1 * num2;
-            break;
-        }
-        num1 = result;
-        console.log('result: ' + result + 'new num1: ' + num1);
-        return result;
-    }
+
+function mapToNumber(arr){
+    newNum = arr.map((x) => parseInt(x));
+    console.log('mapToNumbers. newNum: ' + newNum + '' + (typeof newnum));
+    return newNum;
+}
 
 function display(someNum){
-    if((typeof someNum) === 'undefined' || (typeof someNum) === NaN){
-        console.log('BUG');
-    } else {
     const display = document.getElementById('display');
     console.log('someNum type: ' + typeof someNum);
     let content = someNum.toString();
     display.innerText = content;
     }
-}
