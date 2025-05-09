@@ -24,11 +24,13 @@ function operate(input){
         if(length){
             //doMath();
             operation.pop();
-            console.log('operation array: ' + operation);
+            console.log('operation array should be cleared: ' + operation);
         } else {
             operation.push(input);
+            console.log('operation array: ' + operation);
             storeNum1 = true;
         }
+        display(input);
     }
 
     if(number){
@@ -39,19 +41,20 @@ function operate(input){
             input1.push(input);
             console.log('num1: ' + input1);
         }
+        display(input);
     }
 }
 
-
-function mapToNumber(arr){
-    newNum = arr.map((x) => parseInt(x));
-    console.log('mapToNumbers. newNum: ' + newNum + '' + (typeof newnum));
-    return newNum;
+function makeNumbers(arr){
+    console.log('receiving array: ' + arr);
+    let newArr = arr.join('');
+    console.log('new: ' + newArr);
 }
 
 function display(someNum){
+    let content = '';
     const display = document.getElementById('display');
     console.log('someNum type: ' + typeof someNum);
-    let content = someNum.toString();
+    content = someNum.toString();
     display.innerText = content;
     }
