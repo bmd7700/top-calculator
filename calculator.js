@@ -4,17 +4,17 @@ buttonArray.forEach(button =>(button.addEventListener("click", () => console.log
 buttonArray.forEach(button =>(button.addEventListener("click", () => operate(button.id))));
 
 const operatorArray = ['+', '-', '*', '/', '='];
-const numArray = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
-const numbers = numArray.map((x) => parseInt(x)); // this works to map the array to a series of numbers
-const flag = false;
-const input1 = [];
-const input2 = [];
-const operation = [];
-let storeNum1 = false;
+const numArray = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0','.'];
+const clear = ['clr']
+var input1 = [];
+var input2 = [];
+var operation = [];
+var storeNum1 = false;
 
 function operate(input){
     const number = numArray.includes(input);
     const operator = operatorArray.includes(input);
+    const clr = clear.includes(input);
     
     if(operator){
         length = (operation.length > 0);
@@ -43,6 +43,14 @@ function operate(input){
             console.log('num1: ' + input1);
         }
         display(input);
+    }
+
+    if(clr){
+    input1 = [];
+    input2 = [];
+    operation = [];
+    storeNum1 = false;
+    console.log('NUKING CALCULATOR. input1: ' + input1 + ' input2: ' + input2 + ' operation: ' + operation + ' storeNum1: ' + storeNum1);
     }
 }
 

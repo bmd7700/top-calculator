@@ -22,4 +22,3 @@ Now to debug the following:
         >> if the next input is an operator, the answer should be used as the first operand, etc. 
     3. Decimals. Currently, decimals do not work. Decimals should be accepted and rounded. 
     4. Add a backspace button.
-    5. Make the CLEAR button do something. 
