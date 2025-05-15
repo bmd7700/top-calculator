@@ -16,9 +16,6 @@ Calculator should:
 
 Calculator can now do math! Hooray! 
 Now to debug the following:
-    1. Display not working correctly. The display should show each iteration of the integer, and when a second operator is detected, it should do the math and show the result.
-    2. Equals sign logic. If the equals sign is pressed, the answer should display
-        >> if the next input is a number, the memory should be cleared and new math begins.
-        >> if the next input is an operator, the answer should be used as the first operand, etc. 
-    3. Decimals. Currently, decimals do not work. Decimals should be accepted and rounded. 
-    4. Add a backspace button.
+    1. Decimals. Currently, decimals do not work. Decimals should be accepted and rounded. 
+    2. Test equals sign logic. Is it working as expected?
+    3. Add a backspace button.
