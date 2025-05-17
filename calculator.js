@@ -15,6 +15,7 @@ function operate(input){
     const operator = operatorArray.includes(input);
     const clr = (input == 'clr');
     const equals = (input == '=');
+    const decimal = (input == '.');
     
     if(operator){
         length = (operation.length > 0);
@@ -29,6 +30,18 @@ function operate(input){
             display(input);
             console.log('operation array: ' + operation);
             storeNum1 = true;
+        }
+    }
+
+    if(decimal){
+        if(storeNum1){
+            if(input2.includes('.')){
+                input = null;
+            }
+        } else {
+            if(input1.includes('.')){
+                input = null;
+            }
         }
     }
 
