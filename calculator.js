@@ -16,6 +16,7 @@ function operate(input){
     const number = numArray.includes(input);
     const operator = operatorArray.includes(input);
     const clr = clear.includes(input);
+    const decimal = (input == '.');
     
     if(operator){
         length = (operation.length > 0);
@@ -35,6 +36,15 @@ function operate(input){
         }
     }
 
+    if(decimal && storeNum1){
+        decimalCheck(input2);
+        console.log('decimalCheck input2');
+    }
+    if(decimal && !storeNum1){
+        decimalCheck(input1);
+        console.log('decimalCheck input1');
+    }
+
     if(number){
         if(storeNum1){
             input2.push(input);
@@ -45,17 +55,9 @@ function operate(input){
             display(makeNumbers(input1));
             console.log('num1: ' + input1);
         }
-        //display(input);
     }
 
-    if(clr){
-    input1 = [];
-    input2 = [];
-    operation = [];
-    storeNum1 = false;
-    display(' ');
-    console.log('NUKING CALCULATOR. input1: ' + input1 + ' input2: ' + input2 + ' operation: ' + operation + ' storeNum1: ' + storeNum1);
-    }
+    if(clr){clearMemory();}
 }
 
 function doMath(firstNum, secondNum, operator){
@@ -89,13 +91,34 @@ function makeNumbers(arr){
     console.log('receiving array: ' + arr);
     let newArr = arr.join('');
     console.log('new: ' + newArr + '' + typeof newArr);
-    return parseInt(newArr);
+    //return parseInt(newArr);
+    return parseFloat(newArr);
 }
 
 function display(someNum){
     let content = '';
     const display = document.getElementById('display');
     console.log('someNum type: ' + typeof someNum + ' ' + someNum);
-    content = someNum.toString();
-    display.innerText = content;
+    //content = someNum.toString();
+    display.innerText = someNum;
+}
+
+function error(msg){
+    display('ERROR DETECTED: ' + msg);
+    clearMemory();
+}
+
+function clearMemory(){
+    input1 = [];
+    input2 = [];
+    operation = [];
+    storeNum1 = false;
+    display(' ');
+    console.log('NUKING CALCULATOR. input1: ' + input1 + ' input2: ' + input2 + ' operation: ' + operation + ' storeNum1: ' + storeNum1);
+}
+
+function decimalCheck(arr){
+    if(arr.includes('.')){
+        error('Too many decimals!');
     }
+}

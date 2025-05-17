@@ -16,6 +16,5 @@ Calculator should:
 
 Calculator can now do math! Hooray! 
 Now to debug the following:
-    1. Decimals. Currently, decimals do not work. Decimals should be accepted and rounded. 
     2. Test equals sign logic. Is it working as expected?
     3. Add a backspace button.
