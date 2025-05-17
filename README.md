@@ -15,9 +15,7 @@ Calculator should:
     > Ensure only one decimal point can be entered at a time. 
 
 Calculator can now do math, and supports decimals! Hooray!
-Need to debug:
-    1. Display logic still wonky: will display NaN instead of error message. 
-    2. Add backspace button. 
-    3. Decimals should only display 2 decimal places
-    4. control for multiple decimals. 
+To Do:
+    1. Add backspace button. 
+    2. If second operator entered (e.g. 22 + 22 + 22) the calculator should solve the first couplet?
     

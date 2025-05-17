@@ -96,11 +96,14 @@ function doMath(firstNum, secondNum, operator){
 }
 
 function makeNumbers(arr){
-    console.log('receiving array: ' + arr);
+    console.log('makeNumbers receiving array: ' + arr);
     let newArr = arr.join('');
-    console.log('new: ' + newArr + '' + typeof newArr);
-    //return parseInt(newArr);
-    return parseFloat(newArr);
+    console.log('makeNumbers new array: ' + newArr + '' + typeof newArr);
+    if(newArr.includes('.')){
+        return parseFloat(newArr).toFixed(2);
+    } else {
+        return parseFloat(newArr);
+    }
 }
 
 function display(someNum){
