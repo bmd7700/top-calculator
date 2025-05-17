@@ -17,5 +17,6 @@ Calculator should:
 Calculator can now do math, and supports decimals! Hooray!
 To Do:
     1. Add backspace button. 
-    2. If second operator entered (e.g. 22 + 22 + 22) the calculator should solve the first couplet?
+    2. If second operator entered (e.g. 22 + 22 + 22) the calculator should solve the first couplet and then do the math
+    3. BUG: if second number is a decimal and first is not, it will concatenate them. e.g. 66 + 9.8 = 669.8
     
