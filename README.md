@@ -14,7 +14,11 @@ Calculator should:
     > Add a backspace button.
     > Ensure only one decimal point can be entered at a time. 
 
-Calculator can now do math! Hooray! 
-Now to debug the following:
-    2. Test equals sign logic. Is it working as expected?
-    3. Add a backspace button.
+Calculator can now do math, and supports decimals! Hooray!
+Need to debug:
+    1. Display logic still wonky: will display NaN instead of error message. 
+    2. Add backspace button. 
+    3. Decimals should only display 2 decimal places
+    4. Control for entering two operators: this should cause an error. 
+    5. Decimal button should be disabled if decimal already exists.
+    

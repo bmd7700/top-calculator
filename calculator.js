@@ -16,7 +16,6 @@ function operate(input){
     const number = numArray.includes(input);
     const operator = operatorArray.includes(input);
     const clr = clear.includes(input);
-    const decimal = (input == '.');
     
     if(operator){
         length = (operation.length > 0);
@@ -34,15 +33,6 @@ function operate(input){
             console.log('operation array: ' + operation);
             storeNum1 = true;
         }
-    }
-
-    if(decimal && storeNum1){
-        decimalCheck(input2);
-        console.log('decimalCheck input2');
-    }
-    if(decimal && !storeNum1){
-        decimalCheck(input1);
-        console.log('decimalCheck input1');
     }
 
     if(number){
@@ -75,7 +65,11 @@ function doMath(firstNum, secondNum, operator){
             result = num1 * num2;
             break;
         case "/":
-            result = num1 / num2;
+            if(num2 == 0){
+                result = 'Cannot divide by zero!';
+            } else {
+                result = num1 / num2;
+            }
             break;  
     }
     console.log('result: ' + result);
@@ -115,10 +109,4 @@ function clearMemory(){
     storeNum1 = false;
     display(' ');
     console.log('NUKING CALCULATOR. input1: ' + input1 + ' input2: ' + input2 + ' operation: ' + operation + ' storeNum1: ' + storeNum1);
-}
-
-function decimalCheck(arr){
-    if(arr.includes('.')){
-        error('Too many decimals!');
-    }
 }
