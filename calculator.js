@@ -3,10 +3,8 @@ const buttonArray = Array.from(buttons);
 buttonArray.forEach(button =>(button.addEventListener("click", () => console.log('input:' + button.id))));
 buttonArray.forEach(button =>(button.addEventListener("click", () => operate(button.id))));
 
-const operatorArray = ['+', '-', '*', '/', '='];
+const operatorArray = ['+', '-', '*', '/'];
 const numArray = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0','.'];
-const clear = ['clr']
-const equal = ['=']
 var input1 = [];
 var input2 = [];
 var operation = [];
@@ -15,18 +13,17 @@ var storeNum1 = false;
 function operate(input){
     const number = numArray.includes(input);
     const operator = operatorArray.includes(input);
-    const clr = clear.includes(input);
+    const clr = (input == 'clr');
+    const equals = (input == '=');
     
     if(operator){
         length = (operation.length > 0);
         console.log('length variable: ' + length);
         if(length){
-            let opp = operation.toString();
-            console.log('opp: ' + opp + ' ' + typeof opp);
-            display(doMath(input1, input2, opp));
+            console.log('old operator: ' + operation);
             operation.pop();
-            if(!equal){operation.push(input);}
-            console.log('operation array should be cleared and replaced: ' + operation);
+            operation.push(input);
+            console.log('new operator: ' + operation)
         } else {
             operation.push(input);
             display(input);
@@ -45,6 +42,10 @@ function operate(input){
             display(makeNumbers(input1));
             console.log('num1: ' + input1);
         }
+    }
+
+    if(equals){
+        doMath(input1, input2, operation.toString())
     }
 
     if(clr){clearMemory();}
@@ -72,10 +73,10 @@ function doMath(firstNum, secondNum, operator){
             }
             break;  
     }
-    console.log('result: ' + result);
+    console.log('doMath result: ' + result);
     input1 = [];
     input1.push(result);
-    console.log('new input1: ' + input1);
+    console.log('doMath new input1: ' + input1);
     input2 = [];
     display(result);
     return result;

@@ -19,6 +19,5 @@ Need to debug:
     1. Display logic still wonky: will display NaN instead of error message. 
     2. Add backspace button. 
     3. Decimals should only display 2 decimal places
-    4. Control for entering two operators: this should cause an error. 
-    5. Decimal button should be disabled if decimal already exists.
+    4. control for multiple decimals. 
     
