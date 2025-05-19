@@ -13,7 +13,4 @@ Calculator should:
     > Add a backspace button. [DONE!]
     > Ensure only one decimal point can be entered at a time. [DONE!]
 
-Calculator now does math correctly and displays all user interactions in the display. Decimals are now supported. Clear and Delete (backspace) functions are working as expected. 
-To Do: 
-    1. If second operator entered (e.g. 22 + 22 + 22) the calculator should solve the first couplet and then do the math
-    
+Calculator now does math correctly and displays all user interactions in the display. Decimals are now supported. Clear and Delete (backspace) functions are working as expected.     

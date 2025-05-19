@@ -11,7 +11,6 @@ var operation = [];
 var storeNum1 = false;
 
 function operate(input){
-    //if a second operator that is not equals is detected, do the math
     const number = numArray.includes(input);
     const operator = operatorArray.includes(input);
     const clr = (input == 'clr');
@@ -22,7 +21,9 @@ function operate(input){
     if(operator){
         length = (operation.length > 0);
         console.log('length variable: ' + length);
-        if(length){
+        if(length && storeNum1){
+            doMath(input1, input2, operation.toString())
+        } else if(length){
             console.log('old operator: ' + operation);
             operation.pop();
             operation.push(input);
@@ -33,6 +34,7 @@ function operate(input){
             console.log('operation array: ' + operation);
             storeNum1 = true;
         }
+
     }
 
     if(decimal){
