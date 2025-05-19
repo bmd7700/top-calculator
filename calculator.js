@@ -11,6 +11,7 @@ var operation = [];
 var storeNum1 = false;
 
 function operate(input){
+    //if a second operator that is not equals is detected, do the math
     const number = numArray.includes(input);
     const operator = operatorArray.includes(input);
     const clr = (input == 'clr');
@@ -75,7 +76,7 @@ function doMath(firstNum, secondNum, operator){
     let result;
     switch(operator){
         case "+":
-            result = num1 + num2;
+            result = parseFloat(num1) + parseFloat(num2);
             break;
         case "-":
             result = num1 - num2;
