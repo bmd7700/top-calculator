@@ -4,7 +4,7 @@ buttonArray.forEach(button =>(button.addEventListener("click", () => console.log
 buttonArray.forEach(button =>(button.addEventListener("click", () => operate(button.id))));
 
 const operatorArray = ['+', '-', '*', '/'];
-const numArray = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0','.'];
+const numArray = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0','.', 'del'];
 var input1 = [];
 var input2 = [];
 var operation = [];
@@ -16,6 +16,7 @@ function operate(input){
     const clr = (input == 'clr');
     const equals = (input == '=');
     const decimal = (input == '.');
+    const del = (input == 'del');
     
     if(operator){
         length = (operation.length > 0);
@@ -46,21 +47,25 @@ function operate(input){
     }
 
     if(number){
-        if(storeNum1){
-            input2.push(input);
-            display(makeNumbers(input2));
-            console.log('num2: ' + input2);
-        } else {
-            input1.push(input);
-            display(makeNumbers(input1));
-            console.log('num1: ' + input1);
+        if(del && storeNum1){backspace(input2)};
+        if(del && !storeNum1){backspace(input1)};
+        if(!del){
+            if(storeNum1){
+                input2.push(input);
+                display(makeNumbers(input2));
+                console.log('num2: ' + input2);
+            } else {
+                input1.push(input);
+                display(makeNumbers(input1));
+                console.log('num1: ' + input1);
+            }
         }
     }
 
     if(equals){
         doMath(input1, input2, operation.toString())
     }
-
+    
     if(clr){clearMemory();}
 }
 
@@ -126,4 +131,9 @@ function clearMemory(){
     storeNum1 = false;
     display(' ');
     console.log('NUKING CALCULATOR. input1: ' + input1 + ' input2: ' + input2 + ' operation: ' + operation + ' storeNum1: ' + storeNum1);
+}
+
+function backspace(arr){
+    arr.pop();
+    display(makeNumbers(arr));
 }
